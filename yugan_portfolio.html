@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Yugan Sivakumar — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0f;
+  --bg2:#111118;
+  --bg3:#16161f;
+  --surface:#1c1c28;
+  --border:#2a2a3a;
+  --accent:#00e5c8;
+  --accent2:#7b61ff;
+  --text:#f0f0f5;
+  --muted:#8888a8;
+  --faint:#44445a;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:62px;background:rgba(10,10,15,0.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:17px;letter-spacing:-.3px;color:var(--text)}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{text-decoration:none;font-size:13px;color:var(--muted);letter-spacing:.4px;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+
+/* ─── HERO ─── */
+#hero{min-height:100vh;display:flex;align-items:center;padding:100px 5% 60px;position:relative;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:.25;pointer-events:none}
+.hero-glow{position:absolute;top:-200px;right:-100px;width:700px;height:700px;background:radial-gradient(circle,rgba(0,229,200,.08) 0%,transparent 65%);pointer-events:none}
+.hero-content{position:relative;max-width:760px}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(0,229,200,.08);border:1px solid rgba(0,229,200,.25);border-radius:30px;padding:5px 14px;font-size:12px;color:var(--accent);letter-spacing:.6px;margin-bottom:28px;font-family:'IBM Plex Mono',monospace}
+.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(52px,7vw,88px);line-height:.95;letter-spacing:-3px;margin-bottom:20px}
+h1 .name-line{display:block}
+h1 .accent-line{color:var(--accent)}
+.hero-sub{font-size:17px;color:var(--muted);max-width:520px;margin-bottom:40px;line-height:1.75}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#0a0a0f;padding:12px 26px;border-radius:8px;font-weight:500;font-size:14px;text-decoration:none;transition:opacity .2s,transform .15s}
+.btn-primary:hover{opacity:.88;transform:translateY(-1px)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);color:var(--text);padding:12px 26px;border-radius:8px;font-size:14px;text-decoration:none;transition:border-color .2s,color .2s}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.hero-stats{display:flex;gap:40px}
+.stat-item{}
+.stat-num{font-family:'Syne',sans-serif;font-weight:800;font-size:32px;color:var(--text);letter-spacing:-1px}
+.stat-label{font-size:12px;color:var(--muted);letter-spacing:.4px}
+.stat-divider{width:1px;background:var(--border)}
+
+/* ─── SECTIONS ─── */
+section{padding:90px 5%}
+.section-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px}
+.section-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(30px,4vw,44px);letter-spacing:-1.5px;margin-bottom:50px;line-height:1.1}
+
+/* ─── SKILLS ─── */
+#skills{background:var(--bg2)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2px}
+.skill-group{background:var(--surface);padding:28px;transition:background .2s}
+.skill-group:hover{background:#1f1f2e}
+.skill-group:first-child{border-radius:12px 0 0 0}
+.skill-group:nth-child(2){border-radius:0 12px 0 0}
+.skill-group-label{font-size:11px;letter-spacing:1.2px;color:var(--muted);text-transform:uppercase;font-family:'IBM Plex Mono',monospace;margin-bottom:16px}
+.skill-tags{display:flex;flex-wrap:wrap;gap:8px}
+.skill-tag{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:6px;padding:5px 12px;font-size:13px;color:var(--text);font-family:'IBM Plex Mono',monospace}
+.skill-tag.highlight{background:rgba(0,229,200,.08);border-color:rgba(0,229,200,.3);color:var(--accent)}
+
+/* ─── EXPERIENCE ─── */
+.timeline{position:relative;padding-left:28px}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,var(--accent),var(--accent2),transparent)}
+.exp-card{position:relative;margin-bottom:40px;padding:30px;background:var(--surface);border-radius:12px;border:1px solid var(--border);transition:border-color .2s}
+.exp-card:hover{border-color:var(--faint)}
+.exp-card::before{content:'';position:absolute;left:-34px;top:30px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);box-shadow:0 0 0 4px rgba(0,229,200,.15)}
+.exp-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:6px;flex-wrap:wrap}
+.exp-role{font-family:'Syne',sans-serif;font-weight:700;font-size:20px;letter-spacing:-.5px}
+.exp-period{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);white-space:nowrap;margin-top:4px}
+.exp-company{font-size:14px;color:var(--accent);margin-bottom:18px}
+.exp-points{list-style:none;display:flex;flex-direction:column;gap:10px}
+.exp-points li{padding-left:20px;position:relative;font-size:14px;color:#b0b0cc;line-height:1.7}
+.exp-points li::before{content:'▸';position:absolute;left:0;color:var(--accent);font-size:11px;top:4px}
+.exp-stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px}
+.stack-chip{background:rgba(123,97,255,.1);border:1px solid rgba(123,97,255,.25);border-radius:5px;padding:3px 10px;font-size:12px;color:#a898ff;font-family:'IBM Plex Mono',monospace}
+
+/* ─── PROJECTS ─── */
+#projects{background:var(--bg2)}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px}
+.proj-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:30px;position:relative;overflow:hidden;transition:transform .2s,border-color .2s}
+.proj-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.proj-card:hover{transform:translateY(-4px);border-color:var(--faint)}
+.proj-num{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--faint);margin-bottom:12px}
+.proj-title{font-family:'Syne',sans-serif;font-weight:700;font-size:20px;letter-spacing:-.4px;margin-bottom:12px}
+.proj-period{font-size:12px;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-bottom:14px}
+.proj-desc{font-size:14px;color:#9898b8;line-height:1.75;margin-bottom:20px}
+.proj-stack{display:flex;flex-wrap:wrap;gap:6px}
+.proj-chip{background:rgba(0,229,200,.06);border:1px solid rgba(0,229,200,.18);border-radius:5px;padding:3px 10px;font-size:12px;color:var(--accent);font-family:'IBM Plex Mono',monospace}
+
+/* ─── EDUCATION ─── */
+.edu-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:32px 36px;display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap}
+.edu-icon{width:56px;height:56px;border-radius:14px;background:rgba(0,229,200,.1);border:1px solid rgba(0,229,200,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:26px}
+.edu-body{flex:1;min-width:200px}
+.edu-degree{font-family:'Syne',sans-serif;font-weight:700;font-size:21px;letter-spacing:-.4px;margin-bottom:4px}
+.edu-school{font-size:15px;color:var(--accent);margin-bottom:14px}
+.edu-meta{display:flex;gap:20px;flex-wrap:wrap}
+.edu-meta-item{font-size:13px;color:var(--muted);font-family:'IBM Plex Mono',monospace}
+.edu-meta-item strong{color:var(--text)}
+.courses-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin:18px 0 10px}
+.courses-list{display:flex;flex-wrap:wrap;gap:8px}
+.course-pill{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:20px;padding:4px 13px;font-size:12px;color:#9898b8}
+
+/* ─── CERTS ─── */
+#certs{background:var(--bg2)}
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.cert-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px;display:flex;gap:16px;align-items:center;transition:border-color .2s}
+.cert-card:hover{border-color:rgba(0,229,200,.4)}
+.cert-icon{width:42px;height:42px;border-radius:10px;background:rgba(0,229,200,.08);border:1px solid rgba(0,229,200,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent);text-align:center;line-height:1.3}
+.cert-name{font-weight:500;font-size:14px;margin-bottom:3px}
+.cert-issuer{font-size:12px;color:var(--muted);font-family:'IBM Plex Mono',monospace}
+
+/* ─── CONTACT ─── */
+#contact{text-align:center;padding:100px 5%}
+.contact-box{max-width:560px;margin:0 auto}
+.contact-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(34px,5vw,60px);letter-spacing:-2px;margin-bottom:18px;line-height:1.05}
+.contact-sub{font-size:16px;color:var(--muted);margin-bottom:40px;line-height:1.75}
+.contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+.contact-link{display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border:1px solid var(--border);border-radius:8px;text-decoration:none;font-size:13px;color:var(--text);font-family:'IBM Plex Mono',monospace;transition:border-color .2s,color .2s,background .2s}
+.contact-link:hover{border-color:var(--accent);color:var(--accent);background:rgba(0,229,200,.05)}
+.contact-link .cl-dot{width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.6}
+
+/* ─── FOOTER ─── */
+footer{border-top:1px solid var(--border);padding:24px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+footer p{font-size:12px;color:var(--faint);font-family:'IBM Plex Mono',monospace}
+
+/* ─── SCROLL REVEAL ─── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:640px){
+  nav{padding:0 20px}
+  .nav-links{display:none}
+  #hero,section{padding-left:20px;padding-right:20px}
+  .hero-stats{gap:20px}
+  .exp-header{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">YS<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Available for Opportunities · 2026</div>
+    <h1>
+      <span class="name-line">Yugan</span>
+      <span class="name-line accent-line">Sivakumar</span>
+    </h1>
+    <p class="hero-sub">Computer Science Engineer building full-stack web apps, IoT systems, and AI-powered tools. Certified in RPA and Generative AI. Based in Tamil Nadu, India.</p>
+    <div class="hero-cta">
+      <a href="mailto:yugan.s1212@gmail.com" class="btn-primary">↗ Get In Touch</a>
+      <a href="https://github.com/yugan" target="_blank" class="btn-outline">GitHub Profile</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="stat-num">3+</div><div class="stat-label">Projects Built</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat-item"><div class="stat-num">2</div><div class="stat-label">AI Certifications</div></div>
+      <div class="stat-divider"></div>
+      <div class="stat-item"><div class="stat-num">7.4</div><div class="stat-label">CGPA / 10</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="reveal">
+    <p class="section-label">// 01 &nbsp; capabilities</p>
+    <h2 class="section-title">Technical Skills</h2>
+  </div>
+  <div class="skills-grid reveal">
+    <div class="skill-group">
+      <p class="skill-group-label">Languages</p>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">Python</span>
+        <span class="skill-tag highlight">Java</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">HTML</span>
+        <span class="skill-tag">CSS</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-label">Frameworks & Libs</p>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">Django</span>
+        <span class="skill-tag">REST APIs</span>
+        <span class="skill-tag">NumPy</span>
+        <span class="skill-tag">Pandas</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-label">Databases & Tools</p>
+      <div class="skill-tags">
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">Git / GitHub</span>
+        <span class="skill-tag">VS Code</span>
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">MS Excel</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <p class="skill-group-label">Automation & AI</p>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">UiPath RPA</span>
+        <span class="skill-tag highlight">Generative AI</span>
+        <span class="skill-tag">Prompt Engineering</span>
+        <span class="skill-tag">NLTK</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="reveal">
+    <p class="section-label">// 02 &nbsp; work history</p>
+    <h2 class="section-title">Experience</h2>
+  </div>
+  <div class="timeline reveal">
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
+          <p class="exp-role">Web Development Intern</p>
+          <p class="exp-company">Octanet Services · Remote</p>
+        </div>
+        <p class="exp-period">Dec 2024 – Jan 2025</p>
+      </div>
+      <ul class="exp-points">
+        <li>Architected a full-stack finance portal using Python + Django + MySQL to automate simple & compound interest calculations for loan borrowers, replacing a manual Excel-based workflow used by 3+ staff.</li>
+        <li>Built a secure CRUD records module for borrower data management — enforced input validation and duplicate-prevention logic, cutting record retrieval time by 50% and eliminating data duplication entirely.</li>
+        <li>Delivered the entire project end-to-end as a solo contributor within a 1-month timeline, handling requirements, development, testing, and deployment independently.</li>
+      </ul>
+      <div class="exp-stack">
+        <span class="stack-chip">Python</span>
+        <span class="stack-chip">Django</span>
+        <span class="stack-chip">HTML/CSS</span>
+        <span class="stack-chip">MySQL</span>
+        <span class="stack-chip">Git</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="reveal">
+    <p class="section-label">// 03 &nbsp; selected work</p>
+    <h2 class="section-title">Projects</h2>
+  </div>
+  <div class="projects-grid">
+
+    <div class="proj-card reveal">
+      <p class="proj-num">01 ──</p>
+      <p class="proj-title">Real-Time Health Monitoring System</p>
+      <p class="proj-period">Aug 2024 – Nov 2024</p>
+      <p class="proj-desc">Engineered an Arduino + Raspberry Pi IoT system integrating pulse oximeter, BP, and hydration sensors. Built a live web dashboard with threshold-based colour alerts enabling caregivers to detect anomalies in real time. Implemented MySQL-backed session logging for longitudinal patient health tracking.</p>
+      <div class="proj-stack">
+        <span class="proj-chip">Python</span>
+        <span class="proj-chip">Arduino</span>
+        <span class="proj-chip">Raspberry Pi</span>
+        <span class="proj-chip">JavaScript</span>
+        <span class="proj-chip">MySQL</span>
+      </div>
+    </div>
+
+    <div class="proj-card reveal">
+      <p class="proj-num">02 ──</p>
+      <p class="proj-title">Adaptive AI Quiz Chatbot</p>
+      <p class="proj-period">Jan 2024 – Apr 2024</p>
+      <p class="proj-desc">Built an adaptive quiz chatbot in Python using the Google Gemini API + prompt engineering to dynamically generate follow-up questions from user responses. Implemented NLP preprocessing (tokenisation, intent classification) using NLTK — reducing invalid-input errors to under 2%. Improved AI tool accuracy validation by 30% over static quiz benchmarks.</p>
+      <div class="proj-stack">
+        <span class="proj-chip">Python</span>
+        <span class="proj-chip">Gemini API</span>
+        <span class="proj-chip">NLTK</span>
+        <span class="proj-chip">Prompt Engineering</span>
+        <span class="proj-chip">REST APIs</span>
+      </div>
+    </div>
+
+    <div class="proj-card reveal">
+      <p class="proj-num">03 ──</p>
+      <p class="proj-title">Loan Management Web App</p>
+      <p class="proj-period">Dec 2024 – Jan 2025</p>
+      <p class="proj-desc">Full-stack finance portal replacing manual Excel workflows for 3+ staff. Automated simple and compound interest calculations, built secure CRUD borrower management, and enforced data validation that reduced retrieval time by 50%.</p>
+      <div class="proj-stack">
+        <span class="proj-chip">Python</span>
+        <span class="proj-chip">Django</span>
+        <span class="proj-chip">MySQL</span>
+        <span class="proj-chip">HTML/CSS</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="reveal">
+    <p class="section-label">// 04 &nbsp; academic background</p>
+    <h2 class="section-title">Education</h2>
+  </div>
+  <div class="edu-card reveal">
+    <div class="edu-icon">🎓</div>
+    <div class="edu-body">
+      <p class="edu-degree">B.E. Computer Science & Engineering</p>
+      <p class="edu-school">Panimalar Engineering College, Chennai</p>
+      <div class="edu-meta">
+        <div class="edu-meta-item">CGPA <strong>7.4 / 10</strong></div>
+        <div class="edu-meta-item">Expected <strong>June 2026</strong></div>
+        <div class="edu-meta-item">SSC <strong>100%</strong> — School Topper</div>
+      </div>
+      <p class="courses-label">Relevant Coursework</p>
+      <div class="courses-list">
+        <span class="course-pill">Data Structures & Algorithms</span>
+        <span class="course-pill">OOP</span>
+        <span class="course-pill">DBMS</span>
+        <span class="course-pill">Operating Systems</span>
+        <span class="course-pill">Computer Networks</span>
+        <span class="course-pill">Software Engineering</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certs">
+  <div class="reveal">
+    <p class="section-label">// 05 &nbsp; credentials</p>
+    <h2 class="section-title">Certifications</h2>
+  </div>
+  <div class="certs-grid reveal">
+    <div class="cert-card">
+      <div class="cert-icon">RPA</div>
+      <div>
+        <p class="cert-name">UiPath Automation Developer Associate</p>
+        <p class="cert-issuer">NASSCOM & UiPath</p>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">AI</div>
+      <div>
+        <p class="cert-name">Applied Generative AI</p>
+        <p class="cert-issuer">Infosys Springboard</p>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">SQL</div>
+      <div>
+        <p class="cert-name">SQL Fundamentals</p>
+        <p class="cert-issuer">Accenture</p>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">DSA</div>
+      <div>
+        <p class="cert-name">Active DSA Practice</p>
+        <p class="cert-issuer">HackerRank & LeetCode · yugan12</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-box reveal">
+    <p class="section-label" style="text-align:center;margin-bottom:16px">// 06 &nbsp; reach out</p>
+    <h2 class="contact-title">Let's build something great.</h2>
+    <p class="contact-sub">I'm open to internships, collaborations, and full-time roles starting 2026. Whether it's a project, a question, or just a hello — my inbox is open.</p>
+    <div class="contact-links">
+      <a href="mailto:yugan.s1212@gmail.com" class="contact-link"><span class="cl-dot"></span>yugan.s1212@gmail.com</a>
+      <a href="https://linkedin.com/in/yugan-sivakumar" target="_blank" class="contact-link"><span class="cl-dot"></span>LinkedIn</a>
+      <a href="https://github.com/yugan" target="_blank" class="contact-link"><span class="cl-dot"></span>GitHub</a>
+      <a href="tel:+919150476059" class="contact-link"><span class="cl-dot"></span>+91 9150476059</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Yugan Sivakumar · Erode, Tamil Nadu</p>
+  <p>Built with HTML · CSS · JS</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      const delay = Array.from(e.target.parentElement?.querySelectorAll('.reveal') || []).indexOf(e.target);
+      e.target.style.transitionDelay = Math.min(delay * 80, 300) + 'ms';
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
