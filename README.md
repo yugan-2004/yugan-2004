@@ -26,7 +26,7 @@
 
 <br/>
 
-## `$ cat about.md`
+## ` about`
 
 Computer Science & Engineering graduate building end-to-end web applications with Java, Spring Boot, and React, with a strong pull toward cybersecurity and applied AI. Comfortable across the stack — from designing RESTful APIs and relational MySQL schemas to shipping responsive frontends — and I like taking a project from requirement analysis through testing and deployment.
 
@@ -40,7 +40,7 @@ OPEN_TO   : Full-Stack Developer · Java Backend Developer · Software Engineer
 
 <br/>
 
-## `$ ./tech-stack.sh`
+## `$ ./tech-stack`
 
 <div align="center">
 
@@ -73,7 +73,7 @@ OPEN_TO   : Full-Stack Developer · Java Backend Developer · Software Engineer
 
 <br/>
 
-## `$ cat expertise.table`
+## `$ expertise.table`
 
 <div align="center">
 
@@ -140,7 +140,7 @@ A chatbot that integrates the Google Gemini REST API with custom backend orchest
 
 <br/>
 
-## `$ cat achievements.table`
+## `$  achievements.table`
 
 <div align="center">
 
@@ -156,7 +156,7 @@ A chatbot that integrates the Google Gemini REST API with custom backend orchest
 
 <br/>
 
-## `$ cat education.badge`
+## `$ education.badge`
 
 <div align="center">
 
@@ -169,7 +169,7 @@ A chatbot that integrates the Google Gemini REST API with custom backend orchest
 
 <br/>
 
-## `$ cat certifications.log`
+## `$ certifications.log`
 
 - **SQL Fundamentals Professional Credential** — Accenture
 - **UiPath Automation Developer Associate** — NASSCOM & UiPath
@@ -201,7 +201,7 @@ A chatbot that integrates the Google Gemini REST API with custom backend orchest
 
 <br/>
 
-## `$ tail -f activity.log`
+## `$ activity.log`
 
 <div align="center">
 
@@ -239,7 +239,7 @@ A chatbot that integrates the Google Gemini REST API with custom backend orchest
 
 <br/>
 
-## `$ cat current-focus.yaml`
+## `$ current-focus.yaml`
 
 ```yaml
 learning:
